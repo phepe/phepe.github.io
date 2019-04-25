@@ -1,0 +1,955 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="React Native,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="在使用React Native进行开发的过程中，必不可少的需要在React Native组件里面调用原生的模块，这种调用是非常消耗性能的，而且可能导致很多莫名其妙的问题，所以应该尽量少用。  1. IOS调用原生方法在这里我采用swift来实现原生模块供Js调用">
+<meta name="keywords" content="React Native">
+<meta property="og:type" content="article">
+<meta property="og:title" content="React Native 调用原生方法">
+<meta property="og:url" content="https://phepe.github.io/2018/06/22/ReactNative/NativeModules/index.html">
+<meta property="og:site_name" content="phepe">
+<meta property="og:description" content="在使用React Native进行开发的过程中，必不可少的需要在React Native组件里面调用原生的模块，这种调用是非常消耗性能的，而且可能导致很多莫名其妙的问题，所以应该尽量少用。  1. IOS调用原生方法在这里我采用swift来实现原生模块供Js调用">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-04-25T00:54:42.482Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="React Native 调用原生方法">
+<meta name="twitter:description" content="在使用React Native进行开发的过程中，必不可少的需要在React Native组件里面调用原生的模块，这种调用是非常消耗性能的，而且可能导致很多莫名其妙的问题，所以应该尽量少用。  1. IOS调用原生方法在这里我采用swift来实现原生模块供Js调用">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://phepe.github.io/2018/06/22/ReactNative/NativeModules/">
+
+
+
+
+
+  <title>React Native 调用原生方法 | phepe</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">phepe</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Don't be afraid of new things</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://phepe.github.io/2018/06/22/ReactNative/NativeModules/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="phepe">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="phepe">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">React Native 调用原生方法</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-22T10:18:22+08:00">
+                2018-06-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/React-Native/" itemprop="url" rel="index">
+                    <span itemprop="name">React Native</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/06/22/ReactNative/NativeModules/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count gitment-comments-count" data-xid="/2018/06/22/ReactNative/NativeModules/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>在使用React Native进行开发的过程中，必不可少的需要在React Native组件里面调用原生的模块，这种调用是非常消耗性能的，而且可能导致很多莫名其妙的问题，所以应该尽量少用。</p>
+</blockquote>
+<h3 id="1-IOS调用原生方法"><a href="#1-IOS调用原生方法" class="headerlink" title="1. IOS调用原生方法"></a>1. IOS调用原生方法</h3><p>在这里我采用swift来实现原生模块供Js调用<br><a id="more"></a></p>
+<h4 id="1-1-新建Module类"><a href="#1-1-新建Module类" class="headerlink" title="1.1 新建Module类"></a>1.1 新建Module类</h4><p>新建一RNDemoModule的swift类，创建完后会提示你是否创建Bridging Header的文件，因为IOS开发如果需要swift和oc共存，则swift必须提供一个Bridging Header给oc，否则oc无法调用swift。目前swift无法直接暴露给ReactNative，所以需要oc来做桥接。</p>
+<p>在方法和类前面加上<code>@objc</code>是为了让swift可以被oc所调用</p>
+<p><code>RNDemoModule.swift</code></p>
+<pre><code>import Foundation
+@objc(RNDemoModule)
+class RNDemoModule: NSObject {
+
+    @objc(addEvent:location:)
+    func addEvent(name: String, location: String) -&gt; Void {
+        // Date is ready to use!
+    }
+
+    @objc
+    func closeCurrentPage(){
+         // 由于Js 调用 Native 是异步的，所以有些操作需要回到主线程来执行 
+         DispatchQueue.main.async {
+            let rnDemoApplication = RnDemoApplication()
+            RnDemoApplication.getCurrentController()?.navigationController?.popToRootViewController(animated: true)
+        }
+    }
+
+    @objc
+    func constantsToExport() -&gt; [String: Any]! {
+        return [&quot;someKey&quot;: &quot;someValue&quot;]
+    }
+
+}
+</code></pre><p><code>RNDemoModule-Bridging-Header.h</code> 文件中添加一行代码，这是React Bridge的头文件</p>
+<pre><code>#import &lt;React/RCTBridgeModule.h&gt;
+</code></pre><h4 id="1-2-新建OC类"><a href="#1-2-新建OC类" class="headerlink" title="1.2 新建OC类"></a>1.2 新建OC类</h4><p>要将Native模块暴露给ReactNative，必须要在oc类型文件中去做，新建一个<code>RNDemoModuleBridge.m</code>文件</p>
+<pre><code>#import &lt;Foundation/Foundation.h&gt;
+
+#import &lt;React/RCTBridgeModule.h&gt;
+
+@interface RCT_EXTERN_MODULE(RNDemoModule, NSObject)
+
+RCT_EXTERN_METHOD(addEvent:(NSString *)name location:(NSString *)location)
+
+RCT_EXTERN_METHOD(closeCurrentPage)
+
+@end
+</code></pre><h4 id="1-3-在React-Native中调用"><a href="#1-3-在React-Native中调用" class="headerlink" title="1.3 在React Native中调用"></a>1.3 在React Native中调用</h4><p>Native语言暴露给ReactNative的模块都在NativeModules这个模块上，上面我们暴露了一个<code>RNDemoModule</code>模块，因此我们可以在React Native中通过如下方式得到这个模块。</p>
+<p>新建一个<code>RNNativeModules.js</code>文件，文件的的内容如下</p>
+<pre><code>import {NativeModules} from &apos;react-native&apos;;
+module.exports = NativeModules.RNDemoModule; 
+</code></pre><p>在React Native的业务代码中使用</p>
+<pre><code>import RNDemoModule from &apos;.././RNNativeModules.js&apos;;
+
+...
+
+RNDemoModule.closeCurrentPage();
+</code></pre><h3 id="2-Android调用原生方法"><a href="#2-Android调用原生方法" class="headerlink" title="2. Android调用原生方法"></a>2. Android调用原生方法</h3><p>在这里我采用java来实现原生模块供Js调用</p>
+<h4 id="1-1-新建Module类-1"><a href="#1-1-新建Module类-1" class="headerlink" title="1.1 新建Module类"></a>1.1 新建Module类</h4><p>创建一个原生模块类<code>RNDemoModule.java</code>，继承<code>ReactContextBaseJavaModule</code>类。</p>
+<p> <code>getName</code>函数返回一个字符串名字，这个名字在JavaScript端标记这个模块，这个函数必须实现。</p>
+<p> <code>getContants</code>函数返回需要导出给JavaScript使用的常量。它并不一定需要实现，但在定义一些可以被JavaScript同步访问到的常量值时非常有用。</p>
+<p> <code>show</code>函数是导出给React Native使用的方法，必须用<code>@ReactMethod</code>进行注解，函数的返回类型必须为<code>void</code>，React Native的跨语言访问是异步进行的，所以想要给JavaScript返回一个值的唯一办法是使用回调函数或者发送事件</p>
+<p><code>RNDemoModule.java</code></p>
+<pre><code>package com.rn.demo.rn;
+
+import android.widget.Toast;
+
+import com.facebook.react.bridge.NativeModule;
+import com.facebook.react.bridge.ReactApplicationContext;
+import com.facebook.react.bridge.ReactContext;
+import com.facebook.react.bridge.ReactContextBaseJavaModule;
+import com.facebook.react.bridge.ReactMethod;
+
+import java.util.Map;
+import java.util.HashMap;
+
+public class RNDemoModule extends ReactContextBaseJavaModule {
+
+  private static final String DURATION_SHORT_KEY = &quot;SHORT&quot;;
+  private static final String DURATION_LONG_KEY = &quot;LONG&quot;;
+
+  public RNDemoModule(ReactApplicationContext reactContext) {
+    super(reactContext);
+  }
+
+ @Override
+  public String getName() {
+    return &quot;RNDemoModule&quot;;
+  }
+
+  @Override
+  public Map&lt;String, Object&gt; getConstants() {
+    final Map&lt;String, Object&gt; constants = new HashMap&lt;&gt;();
+    constants.put(DURATION_SHORT_KEY, Toast.LENGTH_SHORT);
+    constants.put(DURATION_LONG_KEY, Toast.LENGTH_LONG);
+    return constants;
+  }
+
+  @ReactMethod
+  public void show(String message, int duration) {
+    Toast.makeText(getReactApplicationContext(), message, duration).show();
+  }
+}
+</code></pre><h4 id="2-2-注册模块"><a href="#2-2-注册模块" class="headerlink" title="2.2 注册模块"></a>2.2 注册模块</h4><p>Android需要将自己写的模块注册后才可以在JavaScript中被访问到，新建一个<code>RNReactPackage.java</code>类，继承<code>ReactPackage</code>类，在<code>createNativeModules</code>方法中添加这个模块</p>
+<p><code>RNReactPackage.java</code></p>
+<pre><code>package com.rn.demo.rn
+
+import com.facebook.react.ReactPackage;
+import com.facebook.react.bridge.NativeModule;
+import com.facebook.react.bridge.ReactApplicationContext;
+import com.facebook.react.uimanager.ViewManager;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
+public class RNReactPackage implements ReactPackage {
+
+  @Override
+  public List&lt;ViewManager&gt; createViewManagers(ReactApplicationContext reactContext) {
+    return Collections.emptyList();
+  }
+
+  @Override
+  public List&lt;NativeModule&gt; createNativeModules(ReactApplicationContext reactContext) {
+    List&lt;NativeModule&gt; modules = new ArrayList&lt;&gt;();
+
+    modules.add(new RNDemoModule(reactContext));
+
+    return modules;
+  }
+}
+</code></pre><p>这个<code>RNReactPackage</code>需要被添加到<code>ReactInstanceManager</code>里面，我们在创建<code>ReactInstanceManager</code>的地方进行修改</p>
+<pre><code>ReactInstanceManager.builder()
+    .setApplication(RNDemoApplication.getInstance())
+    .setBundleAssetName(&quot;index.android.bundle&quot;)
+    .setJSMainModulePath(&quot;index&quot;)
+    .addPackage(MainReactPackage())
+    .addPackage(RNReactPackage()) // 添加刚刚创建的package
+    .setUseDeveloperSupport(BuildConfig.DEBUG)
+    .setInitialLifecycleState(LifecycleState.RESUMED)
+    .build()    
+</code></pre><h4 id="2-3-在React-Native中调用"><a href="#2-3-在React-Native中调用" class="headerlink" title="2.3 在React Native中调用"></a>2.3 在React Native中调用</h4><p> 调用方式和IOS一样</p>
+<h3 id="3-通过回调返回值"><a href="#3-通过回调返回值" class="headerlink" title="3. 通过回调返回值"></a>3. 通过回调返回值</h3><h4 id="3-1-IOS通过callback返回"><a href="#3-1-IOS通过callback返回" class="headerlink" title="3.1 IOS通过callback返回"></a>3.1 IOS通过callback返回</h4><p>在Native中实现的函数</p>
+<p><code>RNDemoModule.swift</code></p>
+<pre><code>@objc
+func findEvents(callback : RCTResponseSenderBlock){
+    let events = [&quot;happy&quot;, &quot;every&quot;, &quot;day&quot;]
+    callback(events)
+}
+</code></pre><p><code>RNDemoModuleBridge.m</code></p>
+<pre><code>RCT_EXTERN_METHOD(findEvents:(RCTResponseSenderBlock)callback)
+</code></pre><p>在Js中获取回调回的信息</p>
+<pre><code>RNDemoModule.findEvents(( events) =&gt; {
+    this.setState({events: events});
+});
+</code></pre><h4 id="3-2-Android通过callback返回"><a href="#3-2-Android通过callback返回" class="headerlink" title="3.2 Android通过callback返回"></a>3.2 Android通过callback返回</h4><p>我们在实现native方法的时候可以通过以下方式返回值</p>
+<pre><code>@ReactMethod
+public void getVersionAndUidByCallback(Callback getVersionAndUidCallback) {
+
+    String versionAndUid = &quot;Callback &quot; + RNDemoApplication
+            .getVersionName() + &quot;/&quot; + RNDemoAccountManager.getInstance().getUserId();
+
+    getVersionAndUidCallback.invoke(versionAndUid);
+}
+</code></pre><p>Js调用的时候通过以下方式拿到返回值</p>
+<pre><code>RNDemoModule.getVersionAndUidByCallback((versionAndUid) =&gt; {
+                        console.log(&quot;versionAndUid: &quot; + versionAndUid);
+    });
+</code></pre>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/React-Native/" rel="tag"># React Native</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/06/21/ReactNative/Integration/" rel="next" title="React Native 集成到现有项目中">
+                <i class="fa fa-chevron-left"></i> React Native 集成到现有项目中
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/06/23/ReactNative/YarnAndNpm/" rel="prev" title="npm和yarn之间的区别">
+                npm和yarn之间的区别 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      
+        <div id="gitment-container"></div>
+      
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="phepe">
+            
+              <p class="site-author-name" itemprop="name">phepe</p>
+              <p class="site-description motion-element" itemprop="description">熟悉app开发和游戏客户端开发</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">21</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-IOS调用原生方法"><span class="nav-number">1.</span> <span class="nav-text">1. IOS调用原生方法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-1-新建Module类"><span class="nav-number">1.1.</span> <span class="nav-text">1.1 新建Module类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-2-新建OC类"><span class="nav-number">1.2.</span> <span class="nav-text">1.2 新建OC类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-3-在React-Native中调用"><span class="nav-number">1.3.</span> <span class="nav-text">1.3 在React Native中调用</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-Android调用原生方法"><span class="nav-number">2.</span> <span class="nav-text">2. Android调用原生方法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-1-新建Module类-1"><span class="nav-number">2.1.</span> <span class="nav-text">1.1 新建Module类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2-注册模块"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 注册模块</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-3-在React-Native中调用"><span class="nav-number">2.3.</span> <span class="nav-text">2.3 在React Native中调用</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-通过回调返回值"><span class="nav-number">3.</span> <span class="nav-text">3. 通过回调返回值</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-1-IOS通过callback返回"><span class="nav-number">3.1.</span> <span class="nav-text">3.1 IOS通过callback返回</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-2-Android通过callback返回"><span class="nav-number">3.2.</span> <span class="nav-text">3.2 Android通过callback返回</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">phepe</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+<!-- LOCAL: You can save these files to your site and update links -->
+    
+        
+        <link rel="stylesheet" href="https://aimingoo.github.io/gitmint/style/default.css">
+        <script src="https://aimingoo.github.io/gitmint/dist/gitmint.browser.js"></script>
+    
+<!-- END LOCAL -->
+
+    
+
+    
+      <script type="text/javascript">
+      function renderGitment(){
+        var gitment = new Gitmint({
+            id: window.location.pathname, 
+            owner: 'phepe',
+            repo: 'phepe.github.io',
+            
+            lang: "" || navigator.language || navigator.systemLanguage || navigator.userLanguage,
+            
+            oauth: {
+            
+            
+                client_secret: 'd3ea93ae62967da834926f17f8cb24be3606faf7',
+            
+                client_id: '9d8e13cd6c1921d29b21'
+            }});
+        gitment.render('gitment-container');
+      }
+
+      
+      renderGitment();
+      
+      </script>
+    
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

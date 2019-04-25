@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="WMware,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="1. 安装虚拟机如果想要兼容新版本的Android Studio，最好下载64位的Win7系统，如果想轻松安装，就要下载系统小于4G的，不然会报错 Directory &amp;quot;EZBOOT&amp;quot; not found，VMware Fusion的版本使用的是10.0.1。然后按照以下步骤创建虚拟机：  新建Win7虚拟机，选择下载下来的ISO镜像，内存建议4G，硬盘40G，操作系统选择wi">
+<meta name="keywords" content="WMware">
+<meta property="og:type" content="article">
+<meta property="og:title" content="WMware coco2dx环境安装">
+<meta property="og:url" content="https://phepe.github.io/2018/08/06/BasicSkills/VMware/index.html">
+<meta property="og:site_name" content="phepe">
+<meta property="og:description" content="1. 安装虚拟机如果想要兼容新版本的Android Studio，最好下载64位的Win7系统，如果想轻松安装，就要下载系统小于4G的，不然会报错 Directory &amp;quot;EZBOOT&amp;quot; not found，VMware Fusion的版本使用的是10.0.1。然后按照以下步骤创建虚拟机：  新建Win7虚拟机，选择下载下来的ISO镜像，内存建议4G，硬盘40G，操作系统选择wi">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-04-25T00:54:42.480Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="WMware coco2dx环境安装">
+<meta name="twitter:description" content="1. 安装虚拟机如果想要兼容新版本的Android Studio，最好下载64位的Win7系统，如果想轻松安装，就要下载系统小于4G的，不然会报错 Directory &amp;quot;EZBOOT&amp;quot; not found，VMware Fusion的版本使用的是10.0.1。然后按照以下步骤创建虚拟机：  新建Win7虚拟机，选择下载下来的ISO镜像，内存建议4G，硬盘40G，操作系统选择wi">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://phepe.github.io/2018/08/06/BasicSkills/VMware/">
+
+
+
+
+
+  <title>WMware coco2dx环境安装 | phepe</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">phepe</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Don't be afraid of new things</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://phepe.github.io/2018/08/06/BasicSkills/VMware/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="phepe">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="phepe">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">WMware coco2dx环境安装</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-06T16:16:10+08:00">
+                2018-08-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Basic-Skills/" itemprop="url" rel="index">
+                    <span itemprop="name">Basic Skills</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/08/06/BasicSkills/VMware/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count gitment-comments-count" data-xid="/2018/08/06/BasicSkills/VMware/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="1-安装虚拟机"><a href="#1-安装虚拟机" class="headerlink" title="1. 安装虚拟机"></a>1. 安装虚拟机</h3><p>如果想要兼容新版本的Android Studio，最好下载64位的Win7系统，如果想轻松安装，就要下载系统小于4G的，不然会报错 <code>Directory &quot;EZBOOT&quot; not found</code>，VMware Fusion的版本使用的是10.0.1。然后按照以下步骤创建虚拟机：</p>
+<ul>
+<li>新建Win7虚拟机，选择下载下来的ISO镜像，内存建议4G，硬盘40G，操作系统选择win7 64位。</li>
+<li>进入电脑的BIOS开启<code>Intel virtualization technology</code>,允许CPU虚拟化64位，开启过的就不用再次开启了(Windows下进入BIOS可以通过电源里面的选项)。</li>
+<li>将CD/DVD设置成IDE，不然会报错<code>nor find file win7.gho</code>。</li>
+<li>使用PQ/PM设置系统分区，类型选择NTFS，然后进阶，设置为作用</li>
+<li>从CD/DVD启动，选择安装到第一分区，进行安装。</li>
+<li>安装过程中会弹出一个对话框，选择否，否则会卡住。</li>
+<li>安装完成后安装VMware Tools，点击安装后如果没有弹出安装界面，需要手动在我的电脑里面找到<code>setup.exe</code>文件，点击安装。</li>
+<li>32位的操作系统需要自己去安装32位的<a href="https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html" target="_blank" rel="noopener">JDK</a><br>Android Studio安装自带的是64位的，安装好后要配置Java的环境变量，使用<code>java -version</code> 检测</li>
+</ul>
+<a id="more"></a>
+<h3 id="2-安装Android开发环境"><a href="#2-安装Android开发环境" class="headerlink" title="2. 安装Android开发环境"></a>2. 安装Android开发环境</h3><p>需要准备Android Studio和JDK安装包:</p>
+<ul>
+<li><p>在谷歌的官方网站上下载Android Studio，进行安装，最好不要安装在有空格的目录下，因为Cocos2dx识别环境变量的时候不能有空格，打开Android Studio安装SDK，选择自定义安装，这样就可以选择SDK安装的路径。</p>
+</li>
+<li><p>如果Android可以顺利打开，则不需要再去下载JDK，只需要设置一下环境变量就行。</p>
+<pre><code>Path    C:\Android\Android Studio\jre\bin;
+</code></pre></li>
+<li><p>安装完成后如果提示没有Java环境，则需要去Orecal的Java官方网站上下载JDK进行安装，然后将JDK的路径设置到<code>Path</code>环境变量中。如果没有Path环境变量，则新建一个。</p>
+<pre><code>Path    C:\Program Files\Java\jdk1.7.0_67\bin;
+</code></pre></li>
+</ul>
+<h3 id="3-安装Cocos2dx开发环境"><a href="#3-安装Cocos2dx开发环境" class="headerlink" title="3. 安装Cocos2dx开发环境"></a>3. 安装Cocos2dx开发环境</h3><h4 id="3-1-安装Python"><a href="#3-1-安装Python" class="headerlink" title="3.1 安装Python"></a>3.1 安装Python</h4><p>在Python<a href="https://www.python.org/downloads" target="_blank" rel="noopener">官方网站</a>下载最新的Python2.7版本，注意要下载对应系统位数的版本，然后进行安装，安装成功后设置到<code>Path</code>环境变量中</p>
+<pre><code>Path    C:\Python27
+</code></pre><h4 id="3-2-安装Cocos2dx"><a href="#3-2-安装Cocos2dx" class="headerlink" title="3.2 安装Cocos2dx"></a>3.2 安装Cocos2dx</h4><p>目前我使用的是cocos2d-x-3.11.1，因为它是最后一个支持Cocos Studio的<code>csb</code>布局文件的版本，如果我们想使用cocos2dx提供的安装脚本来安装<code>cocos2d-x-3.11.1/setup.py</code>，则需要提前安装好Ant，并且将Ant设置到<code>ANT_ROOT</code>环境变量中</p>
+<pre><code>ANT_ROOT C:\apache-ant-1.9.3\bin
+</code></pre><p>我一般自己手动设置，只需要把<code>cocos2d-x-3.11.1/tools/cocos2d-console</code>，复制到虚拟机中，然后将它设置到<code>Path</code>环境变量中,就可以使用<code>cocos</code>命令来进行编译版本</p>
+<pre><code>PATH C:\cocos2d-x-3.11.1\tools\cocos2d-console\bin
+</code></pre><h4 id="3-3-安装NDK"><a href="#3-3-安装NDK" class="headerlink" title="3.3 安装NDK"></a>3.3 安装NDK</h4><p>由于cocos2d-x-3.11.1目前支持的NDK版本是<code>android-ndk-r10d</code>，所以我们从官方网站上下载对应位数的安装包，进行安装，记得安装的路径不能有空格，安装完后将它设置到环境变量<code>NDK_ROOT</code>中</p>
+<pre><code>NDK_ROOT    C:\android-ndk-r10d
+</code></pre><p>NDK下载地址:</p>
+<p><a href="http://dl.google.com/android/ndk/android-ndk-r10d-windows-x86.exe" target="_blank" rel="noopener">Windows32-bit</a><br><a href="http://dl.google.com/android/ndk/android-ndk-r10d-windows-x86_64.exe" target="_blank" rel="noopener">Windows64-bit</a><br><a href="http://dl.google.com/android/ndk/android-ndk-r10d-darwin-x86_64.bin" target="_blank" rel="noopener">MacOS X 64-bit</a><br><a href="http://dl.google.com/android/ndk/android-ndk-r10d-darwin-x86.bin" target="_blank" rel="noopener">MacOS X 32-bit</a></p>
+<h4 id="3-4-设置Android-SDK"><a href="#3-4-设置Android-SDK" class="headerlink" title="3.4 设置Android SDK"></a>3.4 设置Android SDK</h4><p>设置Android SDK的路径，安装Android Studio的时候已经下载好了SDK，我们找到SDK的路径将它设置到环境变量<code>ANDROID_SDK_ROOT</code>中</p>
+<pre><code>ANDROID_SDK_ROOT    C:\Android\sdk
+</code></pre><p>由于谷歌在新的SDK Tools中已经去掉了<code>android</code>命令，而<code>cocos</code>是使用<code>android</code>命令来进行编译的，所以要在网上下载一个旧版本<code>tools</code>来替换新版本的<code>sdk\tools</code>。<br><a href="https://dl.google.com/android/repository/tools_r25.2.5-windows.zip" target="_blank" rel="noopener">Windows下载地址</a></p>
+<p><a href="https://dl.google.com/android/repository/tools_r25.2.5-macosx.zip" target="_blank" rel="noopener">Mac下载地址</a></p>
+<h4 id="3-5-最后的环境变量"><a href="#3-5-最后的环境变量" class="headerlink" title="3.5 最后的环境变量"></a>3.5 最后的环境变量</h4><pre><code>Path    C:\Python27;C:\Android\Android Studio\jre\bin;C:\cocos2d-console\bin
+ANDROID_SDK_ROOT    C:\Android\sdk
+NDK_ROOT    C:\Android\android-ndk-r10d
+</code></pre><h3 id="4-编译版本"><a href="#4-编译版本" class="headerlink" title="4. 编译版本"></a>4. 编译版本</h3><ul>
+<li><p>确保虚拟机里面有项目Gradle文件里面设置的SDK和Build Tools，Build Tools在<code>sdk\build-tools</code>目录下查看，SDK在<code>sdk\platforms</code>目录下查看。</p>
+</li>
+<li><p>一定要记得修改<code>cocos2d/cocos/platform/android/libcocos2dx/AndroidManifest.xml</code>里面的名称，因为这个名称在手机系统里面是可以看到的。</p>
+</li>
+</ul>
+<h3 id="5-其他"><a href="#5-其他" class="headerlink" title="5. 其他"></a>5. 其他</h3><p>安装<a href="https://github.com/shadowsocks/shadowsocks-windows/releases" target="_blank" rel="noopener">shadowsocks</a>翻墙，<br>需要安装 <a href="https://www.microsoft.com/zh-CN/download/details.aspx?id=53344" target="_blank" rel="noopener">.NET Framework 4.6.2</a>，然后如果无法写入注册表，需要保留360相关的软件,<br>卸载后会导致用不了Shadowsocks,最好在安装完系统后不要卸载任何软件，确保shadowsocks可以用之后在卸载，卸载后再次重启确定SS是否可用。然后在安装开发环境。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/WMware/" rel="tag"># WMware</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/08/01/Cocos2d/Toturail/" rel="next" title="Coco2dx编译记录">
+                <i class="fa fa-chevron-left"></i> Coco2dx编译记录
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/11/21/ReactNative/JavaScriptKnowledge/" rel="prev" title="React Native 基础知识">
+                React Native 基础知识 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      
+        <div id="gitment-container"></div>
+      
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="phepe">
+            
+              <p class="site-author-name" itemprop="name">phepe</p>
+              <p class="site-description motion-element" itemprop="description">熟悉app开发和游戏客户端开发</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">21</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-安装虚拟机"><span class="nav-number">1.</span> <span class="nav-text">1. 安装虚拟机</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-安装Android开发环境"><span class="nav-number">2.</span> <span class="nav-text">2. 安装Android开发环境</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-安装Cocos2dx开发环境"><span class="nav-number">3.</span> <span class="nav-text">3. 安装Cocos2dx开发环境</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-1-安装Python"><span class="nav-number">3.1.</span> <span class="nav-text">3.1 安装Python</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-2-安装Cocos2dx"><span class="nav-number">3.2.</span> <span class="nav-text">3.2 安装Cocos2dx</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-3-安装NDK"><span class="nav-number">3.3.</span> <span class="nav-text">3.3 安装NDK</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-4-设置Android-SDK"><span class="nav-number">3.4.</span> <span class="nav-text">3.4 设置Android SDK</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-5-最后的环境变量"><span class="nav-number">3.5.</span> <span class="nav-text">3.5 最后的环境变量</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-编译版本"><span class="nav-number">4.</span> <span class="nav-text">4. 编译版本</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-其他"><span class="nav-number">5.</span> <span class="nav-text">5. 其他</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">phepe</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+<!-- LOCAL: You can save these files to your site and update links -->
+    
+        
+        <link rel="stylesheet" href="https://aimingoo.github.io/gitmint/style/default.css">
+        <script src="https://aimingoo.github.io/gitmint/dist/gitmint.browser.js"></script>
+    
+<!-- END LOCAL -->
+
+    
+
+    
+      <script type="text/javascript">
+      function renderGitment(){
+        var gitment = new Gitmint({
+            id: window.location.pathname, 
+            owner: 'phepe',
+            repo: 'phepe.github.io',
+            
+            lang: "" || navigator.language || navigator.systemLanguage || navigator.userLanguage,
+            
+            oauth: {
+            
+            
+                client_secret: 'd3ea93ae62967da834926f17f8cb24be3606faf7',
+            
+                client_id: '9d8e13cd6c1921d29b21'
+            }});
+        gitment.render('gitment-container');
+      }
+
+      
+      renderGitment();
+      
+      </script>
+    
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

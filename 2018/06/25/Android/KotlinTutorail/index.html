@@ -1,0 +1,1098 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Kotlin,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="初步学习的时候要学会使用Android Studio的“Convert to Kotlin”功能，当不知道kotlin怎么写的时候，可以先用java代码写，然后通过Android Studio转换为kotlin代码。  1. Kotlin基本语法1.1 定义变量在Kotlin中常量用val声明，变量用var声明，关键字在前面，类型以冒号:隔开在后面，也可以省略直接赋值，类型后带问号?表示可为空类">
+<meta name="keywords" content="Kotlin">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Kotlin基本教程">
+<meta property="og:url" content="https://phepe.github.io/2018/06/25/Android/KotlinTutorail/index.html">
+<meta property="og:site_name" content="phepe">
+<meta property="og:description" content="初步学习的时候要学会使用Android Studio的“Convert to Kotlin”功能，当不知道kotlin怎么写的时候，可以先用java代码写，然后通过Android Studio转换为kotlin代码。  1. Kotlin基本语法1.1 定义变量在Kotlin中常量用val声明，变量用var声明，关键字在前面，类型以冒号:隔开在后面，也可以省略直接赋值，类型后带问号?表示可为空类">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-04-25T00:54:42.479Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Kotlin基本教程">
+<meta name="twitter:description" content="初步学习的时候要学会使用Android Studio的“Convert to Kotlin”功能，当不知道kotlin怎么写的时候，可以先用java代码写，然后通过Android Studio转换为kotlin代码。  1. Kotlin基本语法1.1 定义变量在Kotlin中常量用val声明，变量用var声明，关键字在前面，类型以冒号:隔开在后面，也可以省略直接赋值，类型后带问号?表示可为空类">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://phepe.github.io/2018/06/25/Android/KotlinTutorail/">
+
+
+
+
+
+  <title>Kotlin基本教程 | phepe</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">phepe</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Don't be afraid of new things</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://phepe.github.io/2018/06/25/Android/KotlinTutorail/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="phepe">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="phepe">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Kotlin基本教程</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-25T17:35:58+08:00">
+                2018-06-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/06/25/Android/KotlinTutorail/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count gitment-comments-count" data-xid="/2018/06/25/Android/KotlinTutorail/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>初步学习的时候要学会使用Android Studio的“Convert to Kotlin”功能，当不知道kotlin怎么写的时候，可以先用java代码写，然后通过Android Studio转换为kotlin代码。</p>
+</blockquote>
+<h3 id="1-Kotlin基本语法"><a href="#1-Kotlin基本语法" class="headerlink" title="1. Kotlin基本语法"></a>1. Kotlin基本语法</h3><h4 id="1-1-定义变量"><a href="#1-1-定义变量" class="headerlink" title="1.1 定义变量"></a>1.1 定义变量</h4><p>在Kotlin中常量用<code>val</code>声明，变量用<code>var</code>声明，关键字在前面，类型以冒号<code>:</code>隔开在后面，也可以省略直接赋值，类型后带问号<code>?</code>表示可为空类型(默认空安全)。<br><a id="more"></a></p>
+<pre><code>// 自动推断类型
+val s = &quot;Sample&quot;        // 自动推断出字符串
+var i = 23              // 自动推断出整型
+i += 1                  // 变量可以改变值
+
+// 空安全变量
+var a: String = &quot;abc&quot;
+a = null                // 编译错误
+val l = a.length        // 可以放心地使用
+
+// 可为空字符串变量
+var b: String? = &quot;abc&quot;
+b = null // ok
+val l = b.length        // 错误：变量“b”可能为空
+
+// 常量数组int[][][] arrs = new int[3][2][1];
+val arrs = Array(3) { Array(2) { IntArray(1) } }
+</code></pre><p>Kotlin没有隐式拓宽转换，如 Java 中<code>int</code>可以隐式转换为<code>long</code>，必须要显式类型转换。</p>
+<pre><code>val a: Double = 5.2
+val b: Int = a.toInt()      // 显式转换，b 等于 5
+val c: Float = 5.2F
+val d: Int = c.toInt()      // d 等于 5
+</code></pre><p>Kotlin中字符串模板，可以包含一些小段代码，会把求值结果合并到字符串中。<br>模板表达式以美元符（$）开头：</p>
+<pre><code>val h = &quot;me&quot;
+val j = &quot;it is $h&quot;          // it is me
+</code></pre><p>模板中的任意表达式，用大括号：</p>
+<pre><code>val k = &quot;h length is ${h.length}&quot;       // h length is 2
+</code></pre><p><code>Array</code>类来创建和操作数组，和<code>Java</code>区别很大，它定义了<code>get</code>和<code>set</code>函数，<code>size</code>属性，以及一些其他有用的成员函数。<br><code>[]</code>可以用于访问数组的元素，实际上<code>[]</code>被进行了操作符的重载，调用的是<code>Array</code>类的<code>get</code>和<code>set</code>方法。</p>
+<pre><code>//使用装箱操作，
+val arr1 = arrayOf(1, 2, 3)
+//原生类型数组，还有 ByteArray、 ShortArray 等
+val arr2: IntArray = intArrayOf(1, 2, 3)
+//直接指定长度
+val arr3 = arrayOfNulls&lt;Int&gt;(5)
+//长度为 0 的空数组
+val empty = emptyArray&lt;Int&gt;()
+//访问数组元素
+val arr4 = arrayOf(1, 2, 3)
+println(arr4[1])         //输出“2”，建议用这个方法
+println(arr4.get(1))     //输出“2”
+//修改元素
+arr4[1] = 10
+println(arr4[1])        //输出“10”
+//遍历数组
+for (arr in arr4) {
+    println(arr)
+}
+//遍历数组下标
+for (arr in arr4.indices) {
+    println(arr)
+}
+</code></pre><h4 id="1-2-条件"><a href="#1-2-条件" class="headerlink" title="1.2 条件"></a>1.2 条件</h4><p><code>if...else</code>正常使用。</p>
+<pre><code>val l = 4
+val m = 5
+// 作为表达式
+val n = if (l &gt; m) l else m
+</code></pre><p>移除了<code>switch</code>用更强大的<code>when</code>替代，<code>when</code>子式可以是常量、变量、返回数值的表达式、返回<code>Boolean</code>值的表达式，强大到用来替换<code>if...else if</code></p>
+<pre><code>// 测试值 x = 0, -1, 1, 2, 3, 6, 10
+var x = 10
+when (x) {
+    //常量
+    2 -&gt; println(&quot;等于2&quot;)
+    //数值表达式
+    if (x &gt; 0) 1 else -1 -&gt; println(&quot;大于0并等于1，或小于0并等于-1&quot;)
+    //Boolean类型表达式
+    in 1..5 -&gt; println(&quot;范围匹配1-5&quot;)
+    !in 6..9 -&gt; println(&quot;不是6-9&quot;)
+    is Int -&gt; println(&quot;类型判断&quot;)
+    else -&gt; println(&quot;else&quot;)
+}
+// 代替if...else if
+when{
+    x &gt; 6 &amp;&amp; x &lt;= 10  -&gt;  println(&quot;大于6小于等于10&quot;)
+    x &lt; 6 -&gt; println(&quot;小于6&quot;)
+    else -&gt; println(&quot;else&quot;)
+}
+</code></pre><h4 id="1-3-循环"><a href="#1-3-循环" class="headerlink" title="1.3 循环"></a>1.3 循环</h4><p><code>while</code> 和 <code>do...while</code> 同Java并无区别，<code>for</code>则有很大改变并多出了几个变种</p>
+<pre><code>val list = arrayListOf(&quot;aa&quot;, &quot;bb&quot;, &quot;cc&quot;)
+//递增for (int i = 0; i &lt; list.size(); i++)
+for (i in list.indices) {
+   print(list[i])
+}
+//递增for (int i = 2; i &lt; list.size(); i++)
+for (i in 2..list.size-1) {
+   print(list[i])
+}
+//递减for (int i = list.size() - 1; i &gt;= 0; i--)
+for (i in list.size - 1 downTo 0) {
+    print(list[i])
+}
+//操作列表内的对象
+for (item in list) {
+    print(item)
+}
+//加强版
+for（（i， item） in list.witnIndex()） {
+    print(list[i])
+    print(item)
+}
+//变种版
+list.forEach {
+    print(it)
+}
+
+list.forEachIndexed { i, s -&gt;
+    print(list[i])
+    print(s)
+}
+
+list.forEachIndexed(object :(Int,String) -&gt; Unit{
+    override fun invoke(i: Int, s: String) {
+        print(list[i])
+        print(s)
+    }
+})
+
+// 根据当前的一个“book” list， 把选中的书加到一个selectedTopicsMap中
+bookList.filter { it.isSelected }
+  .forEach { selectedTopicsMap.put(it.id, it) }
+</code></pre><h4 id="1-4-函数声明"><a href="#1-4-函数声明" class="headerlink" title="1.4 函数声明"></a>1.4 函数声明</h4><p>使用 fun 关键字声明</p>
+<pre><code>//返回类型 Int
+fun sum(p: Int, q: Int): Int {
+    return p + q
+}
+//表达式作为返回值
+fun sum(p: Int, q: Int) = p + q
+//函数返回无意义的值，相当于 Java 里的 void
+fun sum(p: Int, q: Int): Unit{
+}
+//Unit 返回类型可以省略：
+fun sum(p: Int, q: Int){
+}
+</code></pre><h4 id="1-5-其它"><a href="#1-5-其它" class="headerlink" title="1.5 其它"></a>1.5 其它</h4><p>在Kotlin中冒号<code>:</code>用万能来称呼绝不为过。常量变量的类型声明，函数的返回值，类的继承都需要它</p>
+<pre><code>//val表示常量var表示变量声明
+val name: String = &quot;tutu&quot; 
+//省略类型说明
+var age = &quot;23&quot;
+//fun表示函数
+fun getName(): String{
+   return &quot;tutu&quot;
+}
+//类继承
+class UserList&lt;E&gt;(): ArrayList&lt;E&gt;() {
+    //...
+}
+</code></pre><p>Kotlin最终会还是编译成Java字节码，使用到Java类是必然的，在Kotlin语法如下</p>
+<pre><code>val intent = Intent(this, MainActivity::class.java)
+</code></pre><p>用到内部类和匿名内部类以及<code>lambda</code>的时候，使用<code>@</code>确定<code>this</code>和<code>return</code>指的是哪一个</p>
+<pre><code>class User {
+    inner class State{
+        fun getUser(): User{
+            //返回User
+            return this@User
+        }
+        fun getState(): State{
+            //返回State
+            return this@State
+        }
+    }
+}
+</code></pre><p>使用kotlin实现一个Java中常用的单例</p>
+<pre><code>class User {
+    companion object {
+        @Volatile var instance: User? = null
+            get() {
+                if (field == null) {
+                    synchronized(User::class.java) {
+                        if (field == null)
+                            field = User()
+                    }
+                }
+                return field
+            }
+    }
+
+    var name: String? = null
+    var age: String? = null
+}
+</code></pre><p>自定义getter/setter重点在<code>field</code>，跟我们熟悉所Java的<code>this</code>指代当前类一样，<code>field</code>指代当前参数，直接使用参数名<code>instance</code>代替不会报错但单例就没效果了。</p>
+<p>一开始觉得lambda很高级完全看不懂，其实很简单的就是把接口名、方法名和参数类型省掉不写再加个-&gt;罢了，明白这点了很好理解。</p>
+<pre><code>// 无参数无返回值
+Thread(Runnable {
+    sleep(1000)
+}).start()
+// 单参数不带返回值
+view.setOnClickListener { v -&gt;
+    Log.e(&quot;tag&quot;, &quot;${v.tag}&quot;)
+}
+// 多参数带返回值
+view.setOnKeyListener(View.OnKeyListener { v, keyCode, event -&gt;
+    Log.e(&quot;tag&quot;, &quot;keyCode$keyCode, ${event.keyCode}&quot;)
+    if (event.keyCode == KeyEvent.KEYCODE_BACK)
+        return@OnKeyListener true
+    false
+</code></pre><p>})</p>
+<p>内部类和参数默认为<code>public</code>，而在Java中为<code>default</code>即在同一个包中可见</p>
+<p>类默认为不可继承(<code>final</code>)，想要可被继承要声明为<code>open</code>或<code>abstract</code></p>
+<p>取消了<code>static</code>关键字，静态方法和参数统一写在<code>companion object</code>块</p>
+<p><code>internal</code>模块内可见，<code>inner</code>内部类</p>
+<h3 id="2-检查NULL"><a href="#2-检查NULL" class="headerlink" title="2. 检查NULL"></a>2. 检查NULL</h3><p>Kotlin的类型系统旨在消除来自代码空引用的危险, 在Kotlin中发生NPE的原因只有可能是以下情况:</p>
+<ul>
+<li>显式调用<code>throw NullPointerException()</code></li>
+<li>使用了 <code>!!</code> 操作符</li>
+<li>有些数据在初始化时不一致，例如当<ul>
+<li>传递一个在构造函数中出现的未初始化的<code>this</code>并用于其他地方（“泄漏 this”）</li>
+<li>超类的构造函数调用一个开放成员，该成员在派生中类的实现使用了未初始化的状态；</li>
+</ul>
+</li>
+</ul>
+<p>当我们使用<code>?</code>定义变量的时候可以显式检查<code>b</code>是否为<code>null</code></p>
+<pre><code>if (b != null &amp;&amp; b.length &gt; 0) {
+    print(&quot;String of length ${b.length}&quot;)
+} else {
+    print(&quot;Empty string&quot;)
+}
+</code></pre><p>这只适用于<code>b</code>是不可变的情况（即在检查和使用之间没有修改过的局部变量 ，或者不可覆盖的<code>val</code>成员），因为否则可能会发生在检查之后<code>b</code>又变为<code>null</code>的情况。</p>
+<p>第二个选择是安全调用操作符，写作<code>?.</code>：</p>
+<pre><code>b?.length
+</code></pre><p>如果<code>b</code>非空，就返回<code>b.length</code>，否则返回<code>null</code>，这个表达式返回的类型是<code>Int?</code>。</p>
+<p>安全调用在链式调用中很有用。例如，如果一个员工<code>Bob</code>可能会（或者不会）分配给一个部门， 并且可能有另外一个员工是该部门的负责人，那么获取<code>Bob</code>所在部门负责人（如果有的话）的名字，我们写作：</p>
+<pre><code>bob?.department?.head?.name
+</code></pre><p>如果任意一个属性（环节）为空，这个链式调用就会返回 null。</p>
+<p>我们在编写代码的时候 最好把所有的<code>!!</code>都去掉，因为它会产生<code>NullPointerException</code>，</p>
+<p>假设我们有一个kotlin类</p>
+<pre><code>class RNTestActivity : AppCompatActivity() {
+    var mReactInstanceManager: ReactInstanceManager? = null
+
+    ...
+
+    override fun onPause() {
+        super.onPause()
+
+        if (mReactInstanceManager != null) {
+            mReactInstanceManager!!.onHostPause(this)
+        }
+    }
+}
+</code></pre><p>其中<code>mReactInstanceManager</code>是<code>mutable</code>的，也就是说它的值是会改变的。</p>
+<p>去掉<code>!!</code>后:</p>
+<pre><code>mReactInstanceManager?.let {
+         mReactInstanceManager.onHostPause(this)
+}
+</code></pre><p>虽然我们做了是否为<code>null</code>的判断，但是还是报错，因为可能<code>mReactInstanceManager?.let</code>的时候值不为<code>null</code>但是运行<code>mReactInstanceManager(this)</code>的时候正好变成了<code>null</code></p>
+<p>再次修改: </p>
+<pre><code>override fun onPause() {
+        super.onPause()
+        val reactInstanceManager = mReactInstanceManager
+        reactInstanceManager?.let {
+         reactInstanceManager.onHostPause(this)
+        }
+    }
+</code></pre><p>其中<code>reactInstanceManager</code>是一个新的variable，它是read-only，一旦赋值以后是不会变得，而且是local的。后面的<code>mReactInstanceManager</code>是上面原来的<code>field</code>变量。这样就最大程度的减少了NPE。</p>
+<p>上面的Kotlin code还可以做的一个改进就是用 lambda,实际上这里就是做了和上面<code>val reactInstanceManager = mReactInstanceManager</code>一样的事情。如下：</p>
+<pre><code>class RNTestActivity : AppCompatActivity() {
+    var mReactInstanceManager: ReactInstanceManager? = null
+
+    ...
+
+    override fun onPause() {
+        super.onPause()
+
+        mReactInstanceManager?.let {
+         it.onHostPause(this)
+        }
+    }
+}
+</code></pre><h3 id="3-Kotlin精简"><a href="#3-Kotlin精简" class="headerlink" title="3. Kotlin精简"></a>3. Kotlin精简</h3><p><strong>如果一个函数里面只有一个语句，那么可以直接用“=“简化</strong></p>
+<p>Java代码:</p>
+<pre><code>@Override    
+public int getItemCount() {        
+    return items.size() + 1;    
+}
+
+@Override    
+public int getItemViewType(int position) {
+    if (position == 0) {
+        return TYPE_HEADER;        
+    } else {            
+        return TYPE_ITEM;        
+    }    
+}
+</code></pre><p>Kotlin代码：</p>
+<pre><code>override fun getItemCount() = items.size + 1
+
+override fun getItemViewType(position: Int) = if (position == 0) TYPE_HEADER else TYPE_ITEM
+</code></pre><p><strong>多用<code>when</code>，Mac上option + enter，“Project quick fix ”，直接可以把<code>if</code>转成<code>when</code>语句</strong></p>
+<p>Java代码：</p>
+<pre><code>@Override
+public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        if (viewType == TYPE_VIDEO_ITEM) {
+            return new VideoItemViewHolder(parent);
+        } else if (viewType == TYPE_IMAGE_ITEM) {
+            return new ImageItemViewHolder(parent);
+        } else {
+            return new HeaderViewHolder(parent);
+        }
+        return null;
+    }
+</code></pre><p>Kotlin代码:</p>
+<pre><code>override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder? {
+return when (viewType) {
+        TYPE_VIDEO_ITEM -&gt; VideoViewHolder(parent)
+        TYPE_IMAGE_ITEM -&gt; ImageItemViewHolder(parent)
+        else -&gt; HeaderViewHolder(parent)
+    }
+}
+</code></pre>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Kotlin/" rel="tag"># Kotlin</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/06/24/DesignPattern/SixPrinciples/" rel="next" title="设计模式六大原则">
+                <i class="fa fa-chevron-left"></i> 设计模式六大原则
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/06/27/BasicSkills/Git/" rel="prev" title="Git常用命令">
+                Git常用命令 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      
+        <div id="gitment-container"></div>
+      
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="phepe">
+            
+              <p class="site-author-name" itemprop="name">phepe</p>
+              <p class="site-description motion-element" itemprop="description">熟悉app开发和游戏客户端开发</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">21</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-Kotlin基本语法"><span class="nav-number">1.</span> <span class="nav-text">1. Kotlin基本语法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-1-定义变量"><span class="nav-number">1.1.</span> <span class="nav-text">1.1 定义变量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-2-条件"><span class="nav-number">1.2.</span> <span class="nav-text">1.2 条件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-3-循环"><span class="nav-number">1.3.</span> <span class="nav-text">1.3 循环</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-4-函数声明"><span class="nav-number">1.4.</span> <span class="nav-text">1.4 函数声明</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-5-其它"><span class="nav-number">1.5.</span> <span class="nav-text">1.5 其它</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-检查NULL"><span class="nav-number">2.</span> <span class="nav-text">2. 检查NULL</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-Kotlin精简"><span class="nav-number">3.</span> <span class="nav-text">3. Kotlin精简</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">phepe</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+<!-- LOCAL: You can save these files to your site and update links -->
+    
+        
+        <link rel="stylesheet" href="https://aimingoo.github.io/gitmint/style/default.css">
+        <script src="https://aimingoo.github.io/gitmint/dist/gitmint.browser.js"></script>
+    
+<!-- END LOCAL -->
+
+    
+
+    
+      <script type="text/javascript">
+      function renderGitment(){
+        var gitment = new Gitmint({
+            id: window.location.pathname, 
+            owner: 'phepe',
+            repo: 'phepe.github.io',
+            
+            lang: "" || navigator.language || navigator.systemLanguage || navigator.userLanguage,
+            
+            oauth: {
+            
+            
+                client_secret: 'd3ea93ae62967da834926f17f8cb24be3606faf7',
+            
+                client_id: '9d8e13cd6c1921d29b21'
+            }});
+        gitment.render('gitment-container');
+      }
+
+      
+      renderGitment();
+      
+      </script>
+    
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
