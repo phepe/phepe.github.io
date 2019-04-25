@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="C#,">
+  <meta name="keywords" content="Game,">
 
 
 
@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="1. 基本概念协程(Coroutine)：协同程序，在主程序运行的同时，开启另外一段逻辑处理，来协同当前程序的执行。Unity的协程系统是基于C#的一个简单而强大的接口，迭代器(IEnumerator)，协程并不是多线程的，只是运行的结果很像多线程而已。他们最大的区别就是多线程可以多核并发，但是协程只能是单核按帧顺序轮转，线程可以使用多个CPU，协程不能，所以线程是真的并行。协程是在unity主线">
-<meta name="keywords" content="C#">
+<meta name="description" content="1. 基本概念使用UGUI来进行UI开发，离不开Canvas组件，所有的 UI 元素，要么自己包含 Canvas 组件，要么是 Canvas 组件所在 GameObject 的子节点。">
+<meta name="keywords" content="Game">
 <meta property="og:type" content="article">
-<meta property="og:title" content="C#协程">
-<meta property="og:url" content="https://phepe.github.io/2019/04/03/Unity3d/Coroutine/index.html">
+<meta property="og:title" content="Unity3d的Canvas">
+<meta property="og:url" content="https://phepe.github.io/2019/04/20/Unity3d/Canvas/index.html">
 <meta property="og:site_name" content="phepe">
-<meta property="og:description" content="1. 基本概念协程(Coroutine)：协同程序，在主程序运行的同时，开启另外一段逻辑处理，来协同当前程序的执行。Unity的协程系统是基于C#的一个简单而强大的接口，迭代器(IEnumerator)，协程并不是多线程的，只是运行的结果很像多线程而已。他们最大的区别就是多线程可以多核并发，但是协程只能是单核按帧顺序轮转，线程可以使用多个CPU，协程不能，所以线程是真的并行。协程是在unity主线">
+<meta property="og:description" content="1. 基本概念使用UGUI来进行UI开发，离不开Canvas组件，所有的 UI 元素，要么自己包含 Canvas 组件，要么是 Canvas 组件所在 GameObject 的子节点。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-04-25T00:54:42.484Z">
+<meta property="og:updated_time" content="2019-04-25T01:22:00.966Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="C#协程">
-<meta name="twitter:description" content="1. 基本概念协程(Coroutine)：协同程序，在主程序运行的同时，开启另外一段逻辑处理，来协同当前程序的执行。Unity的协程系统是基于C#的一个简单而强大的接口，迭代器(IEnumerator)，协程并不是多线程的，只是运行的结果很像多线程而已。他们最大的区别就是多线程可以多核并发，但是协程只能是单核按帧顺序轮转，线程可以使用多个CPU，协程不能，所以线程是真的并行。协程是在unity主线">
+<meta name="twitter:title" content="Unity3d的Canvas">
+<meta name="twitter:description" content="1. 基本概念使用UGUI来进行UI开发，离不开Canvas组件，所有的 UI 元素，要么自己包含 Canvas 组件，要么是 Canvas 组件所在 GameObject 的子节点。">
 
 
 
@@ -120,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="https://phepe.github.io/2019/04/03/Unity3d/Coroutine/">
+  <link rel="canonical" href="https://phepe.github.io/2019/04/20/Unity3d/Canvas/">
 
 
 
 
 
-  <title>C#协程 | phepe</title>
+  <title>Unity3d的Canvas | phepe</title>
   
 
 
@@ -253,7 +253,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://phepe.github.io/2019/04/03/Unity3d/Coroutine/">
+    <link itemprop="mainEntityOfPage" href="https://phepe.github.io/2019/04/20/Unity3d/Canvas/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="phepe">
@@ -270,7 +270,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">C#协程</h1>
+          <h1 class="post-title" itemprop="name headline">Unity3d的Canvas</h1>
         
 
         <div class="post-meta">
@@ -282,8 +282,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-03T16:25:02+08:00">
-                2019-04-03
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-20T14:25:02+08:00">
+                2019-04-20
               </time>
             
 
@@ -323,8 +323,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2019/04/03/Unity3d/Coroutine/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count gitment-comments-count" data-xid="/2019/04/03/Unity3d/Coroutine/" itemprop="commentsCount"></span>
+                <a href="/2019/04/20/Unity3d/Canvas/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count gitment-comments-count" data-xid="/2019/04/20/Unity3d/Canvas/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -352,40 +352,134 @@
       
 
       
-        <h3 id="1-基本概念"><a href="#1-基本概念" class="headerlink" title="1. 基本概念"></a>1. 基本概念</h3><p>协程(Coroutine)：协同程序，在主程序运行的同时，开启另外一段逻辑处理，来协同当前程序的执行。Unity的协程系统是基于C#的一个简单而强大的接口，迭代器(IEnumerator)，协程并不是多线程的，只是运行的结果很像多线程而已。他们最大的区别就是多线程可以多核并发，但是协程只能是单核按帧顺序轮转，线程可以使用多个CPU，协程不能，所以线程是真的并行。协程是在unity主线程中运行的，每一帧中处理一次，而并不与主线程并行。这就意味着在协程之间并不存在着所谓线程间的同步和互斥问题，访问同一个值也都是安全的，不会出现死锁。<br><a id="more"></a></p>
-<h3 id="2-协程的用法"><a href="#2-协程的用法" class="headerlink" title="2. 协程的用法"></a>2. 协程的用法</h3><h4 id="2-1-开启协程"><a href="#2-1-开启协程" class="headerlink" title="2.1 开启协程"></a>2.1 开启协程</h4><p>开启协程的两种方式</p>
+        <h3 id="1-基本概念"><a href="#1-基本概念" class="headerlink" title="1. 基本概念"></a>1. 基本概念</h3><p>使用UGUI来进行UI开发，离不开Canvas组件，所有的 UI 元素，要么自己包含 Canvas 组件，要么是 Canvas 组件所在 GameObject 的子节点。<br><a id="more"></a></p>
+<h3 id="2-Canvas主要参数"><a href="#2-Canvas主要参数" class="headerlink" title="2. Canvas主要参数"></a>2. Canvas主要参数</h3><ul>
+<li><p>Render Mode</p>
 <ul>
-<li><code>StartCoroutine(string methodName)</code>。参数是方法名(字符串类型)；此方法可以包含一个参数，形参方法可以有返回值。</li>
-<li><code>StartCoroutine（IEnumerator method)</code>。参数是方法名(TestMethod()),方法中可以包含多个参数；IEnumrator 类型的方法不能含有ref或者out<br>类型的参数，但可以含有被传递的引用；必须有有返回值，且返回值类型为IEnumrator,返回值使用（yield retuen +表达式或者值，或者 yield break）语句。</li>
-</ul>
-<h4 id="2-2-终止协程"><a href="#2-2-终止协程" class="headerlink" title="2.2 终止协程"></a>2.2 终止协程</h4><p>终止协程的两种方式</p>
+<li><p>Screen Space - Overlay：屏幕控件-覆盖模式，画布会填满整个屏幕空间，可以理解为Unity为你自动设置好了UICamera，而且这个相机的Depth值是大于100的（相机能设置的最大Depth值为100），所以永远显示在最前面。此模式UICamera的Z值应该是-1000，所以Z值只要大于-1000并在UICamera的正交投影范围内，就有可能显示的UI界面上。</p>
 <ul>
-<li><code>StopCoroutine (string methodName)</code>，只能终止指定的协程,在程序中调用<code>StopCoroutine()</code> 方法只能终止以字符串形式启动的协程。</li>
-<li><code>StopAllCoroutine()</code>，终止所有协程</li>
-</ul>
-<h4 id="2-2-挂起"><a href="#2-2-挂起" class="headerlink" title="2.2 挂起"></a>2.2 挂起</h4><ul>
-<li><p><code>yield</code>：挂起，程序遇到yield关键字时会被挂起，暂停执行，等待条件满足时从当前位置继续执行</p>
+<li><p>Pixel Perfect：UI元素精确到像素对齐，使UI元素像素对应，效果就是边缘清晰不模糊</p>
 </li>
-<li><p><code>yield return 0</code> or <code>yield return null</code>:程序在下一帧中从当前位置继续执行</p>
+<li><p>Sort Order：指示画布的深度，多个Canvas时可以调整其显示顺序</p>
 </li>
-<li><p><code>yield return 1,2,3,......</code>: 程序等待1，2，3…帧之后从当前位置继续执行</p>
-</li>
-<li><p><code>yield return new WaitForSeconds(n)</code>:程序等待n秒后从当前位置继续执行</p>
-</li>
-<li><p><code>yield new WaitForEndOfFrame()</code>:在所有的渲染以及GUI程序执行完成后从当前位置继续执行</p>
-</li>
-<li><p><code>yield new WaitForFixedUpdate()</code>:所有脚本中的FixedUpdate()函数都被执行后从当前位置继续执行</p>
-</li>
-<li><p><code>yield return WWW</code>:等待一个网络请求完成后从当前位置继续执行</p>
-</li>
-<li><p><code>yield return StartCoroutine()</code>:等待一个协程执行完成后从当前位置继续执行</p>
-</li>
-<li><p><code>yield break</code>:将会导致协程的执行条件不被满足，不会从当前的位置继续执行程序，而是直接从当前位置跳出函数体，回到函数的根部</p>
+<li><p>Target Display：目标显示器，Unity多开时选择显示器用</p>
 </li>
 </ul>
-<h3 id="3-协程的执行原理"><a href="#3-协程的执行原理" class="headerlink" title="3. 协程的执行原理"></a>3. 协程的执行原理</h3><p>协程函数的返回值是IEnumerator，它是一个迭代器，可以把它当成执行一个序列的某个节点的指针，它提供了两个重要的接口，分别是<code>Current</code>(返回当前指向的元素)和<code>MoveNext</code><br>(将指针向后移动一个单位，如果移动成功，则返回<code>true</code>)</p>
-<p>yield关键词用来声明序列中的下一个值或者是一个无意义的值，如果使用yield <code>return x</code>(x是指一个具体的对象或者数值)的话，那么MoveNext返回为true并且<code>Current</code>被赋值为x,如果使用<code>yield break</code>使得<code>MoveNext</code>返回为<code>false</code></p>
-<p>如果<code>MoveNext</code>函数返回为<code>true</code>意味着协程的执行条件被满足，则能够从当前的位置继续往下执行。否则不能从当前位置继续往下执行。</p>
+</li>
+<li><p>Screen Space - Camera：屏幕空间-摄影机模式，画布也是填满整个屏幕空间，如果屏幕尺寸改变，画布也会自动改变尺寸来匹配屏幕，此模式我们需要一个Camera，这个相机的作用就是把它所投射获取到的界面当做UI界面。一般情况下，UI界面只是一个二维平面，所以把相机的投影设置为Orthographic，即正交投影，<code>Culling Mask</code>设置为UI，表示只显示跟UI层相关的信息，接着再调整一下相机的Size，因为相机是锥形的，让他的大小与Canvas的保持一致，最后再设置一下相机的Z值，保证Canvas在相机之前就搞定了。改模式下面 UI 并不一定能渲染在 3d 元素之上。</p>
+<ul>
+<li>Render Camera：渲染摄像机</li>
+<li>Plane Distance：Canvas与Camera的距离</li>
+<li>Sorting Layer： 用来指示画布的深度，画布所使用的Sorting Layer越排在下面，显示的优先级也就越高，针对多个画布显示</li>
+<li>Order in Layer：在相同的Sort Layer下的画布显示先后顺序。数字越高，显示的优先级也就越高。多个 Canvas 具有相同的 Sorting Layer 时，根据 Order in Layer 来确定显示优先级。</li>
+</ul>
+</li>
+<li><p>World Space：把UI当做三维物体来处理，跟随人物移动的血条或者名称。</p>
+</li>
+</ul>
+</li>
+</ul>
+<p>Canvas渲染优先级： Sort Order -&gt; Sorting Layer -&gt; Order in Layer</p>
+<p>相同的 Screen Space - Overlay：显示优先级由 Sort Order 确定</p>
+<p>相同的 Screen Space - Camera：显示优先级由 Sorting Layer 和 Order in Layer 确定</p>
+<p>不同模式的 Canvas之间，Screen Space - Overlay 的 Canvas 永远显示在最前面，Screen Space - Camera 和 World 的显示关系决定于 World Canvas 距离摄像机的位置以及 Screen Space - Camera Canvas 的 Plane Distance</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">渲染模式</th>
+<th style="text-align:center">画布对应屏幕</th>
+<th style="text-align:center">摄像机</th>
+<th style="text-align:center">像素对应</th>
+<th style="text-align:center">合适类型</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">Screen Space-Overlay</td>
+<td style="text-align:center">是</td>
+<td style="text-align:center">不需要</td>
+<td style="text-align:center">可选</td>
+<td style="text-align:center">2D UI</td>
+</tr>
+<tr>
+<td style="text-align:center">Screen Space-Camera</td>
+<td style="text-align:center">是</td>
+<td style="text-align:center">需要</td>
+<td style="text-align:center">可选</td>
+<td style="text-align:center">2D UI</td>
+</tr>
+<tr>
+<td style="text-align:center">World Space</td>
+<td style="text-align:center">否</td>
+<td style="text-align:center">需要</td>
+<td style="text-align:center">不可选</td>
+<td style="text-align:center">3D UI</td>
+</tr>
+</tbody>
+</table>
+<h3 id="3-Canvas-Scaler-组件"><a href="#3-Canvas-Scaler-组件" class="headerlink" title="3. Canvas Scaler 组件"></a>3. Canvas Scaler 组件</h3><p>Canvas Scaler是Unity UI系统中，控制UI元素的总体大小和像素密度的组件，Canvas Scaler的缩放比例影响着Canvas下的元素，包含字体大小和图像边界。</p>
+<ul>
+<li><p>UI Scale Mode：UI缩放模式</p>
+<ul>
+<li><p>Constant Pixel Size：保持像素尺寸，忽略屏幕尺寸,UI在任何分辨率下都不会进行缩放拉伸，只有通过改变Scale Factor才会进行缩拉，因此不推荐使用该模式(而这种模式的优点就是你可以通过写自适应算法来改变Scale Factor的值，代替unity的自适应算法)</p>
+<ul>
+<li><p>Scale Factor: 对Canvas下的UI整体缩放</p>
+</li>
+<li><p>Reference Pixels Per Unit: 每单位像素量(sprite默认每单位像素量为100)</p>
+</li>
+</ul>
+</li>
+<li><p>Scale With Screen Size： 根据屏幕宽度缩放UI尺寸,相当于使用unity的自适应算法，此时unity会根据屏幕分辨率自动调节Scale Factor的值。在做自适应时，一般要先选择一种比较主流的分辨率(即比较多的机型都采用这种分辨率)进行UI的设计，例如采用1024x576，在这里就是设置Reference Resolution的值了。</p>
+<ul>
+<li><p>Reference Resolution: 参考分辨率(一般设为1280x720或者1920x1080)</p>
+</li>
+<li><p>Screen Match Mode: 屏幕匹配模式</p>
+<ul>
+<li><p>Match Width or Height: 匹配屏幕宽度或者高度(通过Match值调节匹配权重),当值为0即处于Width那端时，表示屏幕高度对于UI大小完全没有任何影响，只有宽度会对UI大小产生影响。例如设置屏幕为800<em>600，然后改变为800</em>300，屏幕高度变小了，但UI并没有进行缩拉；同理当值为1即处于Height那端时，表示屏幕宽度对于UI大小完全没有任何影响，只有高度会对UI大小产生影响。当值为0.5的时候，对宽哥进行加权缩放。屏幕自适应常用方式 ！！！</p>
+</li>
+<li><p>Expand: 横向或纵向展开画布区域，所以画布的大小永远不会小于参考</p>
+</li>
+<li><p>Shrink: 在水平或垂直方向上收缩画布区域，所以画布的大小永远不会比参考大</p>
+</li>
+<li><p>Reference Pixels Per Unit: 如果精灵具有‘Pixels Per Unit’设置，则精灵中的一个像素将覆盖UI中的一个单位</p>
+</li>
+</ul>
+</li>
+<li><p>Constant Physical Size：保持UI的物理尺寸，忽略屏幕尺寸和分辨率</p>
+<ul>
+<li><p>hysical Unit: 用于指定位置和大小的物理单位。 Centimeters(厘米)、Millimeters(毫米)、Inches(英寸)、Points(点)</p>
+</li>
+<li><p>Fallback Screen DPI: 如果屏幕DPI未知,则用此值替代</p>
+</li>
+<li><p>Default Sprite DPI: 每英寸像素用于有‘Pixels Per Unit’设置的精灵，与 ‘Reference Pixels Per Unit’相匹配。</p>
+</li>
+<li><p>Default Sprite DPI: 每英寸像素用于有‘Pixels Per Unit’设置的精灵，与 ‘Reference Pixels Per Unit’相匹配。</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>一般来说，比较不错的设置就是：<code>Canvas Scaler</code> 选择 <code>Scale With Screen Size</code><br><code>Screen Match Mode</code> 选择 <code>Match Width Or Height</code>，比例设为1，即只和高度进行适配。</p>
+<p>注意 Math 设置需要根据实际需要 分情况而定</p>
+<ul>
+<li><p>横屏：屏幕高度确定是1080，宽不确定，可能是双排，这是屏幕适配 with=0</p>
+</li>
+<li><p>竖屏：屏幕宽度确定比如800，高度不确定，这时屏幕适配hight=1</p>
+</li>
+</ul>
+<p><a href="https://gameinstitute.qq.com/community/detail/127148" target="_blank" rel="noopener">参考文章</a></p>
+<h3 id="4-Graphic-Raycaster组件"><a href="#4-Graphic-Raycaster组件" class="headerlink" title="4. Graphic Raycaster组件"></a>4. Graphic Raycaster组件</h3><p>关于UI射线检测的设置</p>
+<ul>
+<li><p>Ignore Reversed Graphics：是否忽略反转图片的检测。</p>
+</li>
+<li><p>Blocking Objects：在Canvas前面，可以遮挡射线检测的物体。</p>
+</li>
+<li><p>Blocking Mask：遮挡射线检测的层级。</p>
+</li>
+</ul>
 
       
     </div>
@@ -403,7 +497,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/C/" rel="tag"># C#</a>
+            <a href="/tags/Game/" rel="tag"># Game</a>
           
         </div>
       
@@ -416,8 +510,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/03/20/Unity3d/UnityNote/" rel="next" title="Unity3d学习笔记">
-                <i class="fa fa-chevron-left"></i> Unity3d学习笔记
+              <a href="/2019/04/03/Unity3d/Coroutine/" rel="next" title="C#协程">
+                <i class="fa fa-chevron-left"></i> C#协程
               </a>
             
           </div>
@@ -426,8 +520,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/04/20/Unity3d/Canvas/" rel="prev" title="Unity3d的Canvas">
-                Unity3d的Canvas <i class="fa fa-chevron-right"></i>
+              <a href="/2019/04/24/Unity3d/Camera/" rel="prev" title="Unity3d的Camera">
+                Unity3d的Camera <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -569,7 +663,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-基本概念"><span class="nav-number">1.</span> <span class="nav-text">1. 基本概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-协程的用法"><span class="nav-number">2.</span> <span class="nav-text">2. 协程的用法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1-开启协程"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 开启协程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2-终止协程"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 终止协程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2-挂起"><span class="nav-number">2.3.</span> <span class="nav-text">2.2 挂起</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-协程的执行原理"><span class="nav-number">3.</span> <span class="nav-text">3. 协程的执行原理</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-基本概念"><span class="nav-number">1.</span> <span class="nav-text">1. 基本概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-Canvas主要参数"><span class="nav-number">2.</span> <span class="nav-text">2. Canvas主要参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-Canvas-Scaler-组件"><span class="nav-number">3.</span> <span class="nav-text">3. Canvas Scaler 组件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-Graphic-Raycaster组件"><span class="nav-number">4.</span> <span class="nav-text">4. Graphic Raycaster组件</span></a></li></ol></div>
             
 
           </div>

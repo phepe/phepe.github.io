@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="C#,">
+  <meta name="keywords" content="Game,">
 
 
 
@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="1. 基本概念协程(Coroutine)：协同程序，在主程序运行的同时，开启另外一段逻辑处理，来协同当前程序的执行。Unity的协程系统是基于C#的一个简单而强大的接口，迭代器(IEnumerator)，协程并不是多线程的，只是运行的结果很像多线程而已。他们最大的区别就是多线程可以多核并发，但是协程只能是单核按帧顺序轮转，线程可以使用多个CPU，协程不能，所以线程是真的并行。协程是在unity主线">
-<meta name="keywords" content="C#">
+<meta name="description" content="1. 基本概念Camera是玩家观察世界的装置，屏幕空间点按像素定义，屏幕的左下为（0,0）；右上是（pixelwidth，pixelHeight）。在Unity中创建一个Camera后，除了默认带的Transform组件外，还会带上Audio Lisenter组件，如果场景中没有这个组件，将听不到任何声音。">
+<meta name="keywords" content="Game">
 <meta property="og:type" content="article">
-<meta property="og:title" content="C#协程">
-<meta property="og:url" content="https://phepe.github.io/2019/04/03/Unity3d/Coroutine/index.html">
+<meta property="og:title" content="Unity3d的Camera">
+<meta property="og:url" content="https://phepe.github.io/2019/04/24/Unity3d/Camera/index.html">
 <meta property="og:site_name" content="phepe">
-<meta property="og:description" content="1. 基本概念协程(Coroutine)：协同程序，在主程序运行的同时，开启另外一段逻辑处理，来协同当前程序的执行。Unity的协程系统是基于C#的一个简单而强大的接口，迭代器(IEnumerator)，协程并不是多线程的，只是运行的结果很像多线程而已。他们最大的区别就是多线程可以多核并发，但是协程只能是单核按帧顺序轮转，线程可以使用多个CPU，协程不能，所以线程是真的并行。协程是在unity主线">
+<meta property="og:description" content="1. 基本概念Camera是玩家观察世界的装置，屏幕空间点按像素定义，屏幕的左下为（0,0）；右上是（pixelwidth，pixelHeight）。在Unity中创建一个Camera后，除了默认带的Transform组件外，还会带上Audio Lisenter组件，如果场景中没有这个组件，将听不到任何声音。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-04-25T00:54:42.484Z">
+<meta property="og:updated_time" content="2019-04-25T01:11:14.373Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="C#协程">
-<meta name="twitter:description" content="1. 基本概念协程(Coroutine)：协同程序，在主程序运行的同时，开启另外一段逻辑处理，来协同当前程序的执行。Unity的协程系统是基于C#的一个简单而强大的接口，迭代器(IEnumerator)，协程并不是多线程的，只是运行的结果很像多线程而已。他们最大的区别就是多线程可以多核并发，但是协程只能是单核按帧顺序轮转，线程可以使用多个CPU，协程不能，所以线程是真的并行。协程是在unity主线">
+<meta name="twitter:title" content="Unity3d的Camera">
+<meta name="twitter:description" content="1. 基本概念Camera是玩家观察世界的装置，屏幕空间点按像素定义，屏幕的左下为（0,0）；右上是（pixelwidth，pixelHeight）。在Unity中创建一个Camera后，除了默认带的Transform组件外，还会带上Audio Lisenter组件，如果场景中没有这个组件，将听不到任何声音。">
 
 
 
@@ -120,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="https://phepe.github.io/2019/04/03/Unity3d/Coroutine/">
+  <link rel="canonical" href="https://phepe.github.io/2019/04/24/Unity3d/Camera/">
 
 
 
 
 
-  <title>C#协程 | phepe</title>
+  <title>Unity3d的Camera | phepe</title>
   
 
 
@@ -253,7 +253,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://phepe.github.io/2019/04/03/Unity3d/Coroutine/">
+    <link itemprop="mainEntityOfPage" href="https://phepe.github.io/2019/04/24/Unity3d/Camera/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="phepe">
@@ -270,7 +270,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">C#协程</h1>
+          <h1 class="post-title" itemprop="name headline">Unity3d的Camera</h1>
         
 
         <div class="post-meta">
@@ -282,8 +282,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-03T16:25:02+08:00">
-                2019-04-03
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-24T19:25:02+08:00">
+                2019-04-24
               </time>
             
 
@@ -323,8 +323,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2019/04/03/Unity3d/Coroutine/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count gitment-comments-count" data-xid="/2019/04/03/Unity3d/Coroutine/" itemprop="commentsCount"></span>
+                <a href="/2019/04/24/Unity3d/Camera/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count gitment-comments-count" data-xid="/2019/04/24/Unity3d/Camera/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -352,40 +352,34 @@
       
 
       
-        <h3 id="1-基本概念"><a href="#1-基本概念" class="headerlink" title="1. 基本概念"></a>1. 基本概念</h3><p>协程(Coroutine)：协同程序，在主程序运行的同时，开启另外一段逻辑处理，来协同当前程序的执行。Unity的协程系统是基于C#的一个简单而强大的接口，迭代器(IEnumerator)，协程并不是多线程的，只是运行的结果很像多线程而已。他们最大的区别就是多线程可以多核并发，但是协程只能是单核按帧顺序轮转，线程可以使用多个CPU，协程不能，所以线程是真的并行。协程是在unity主线程中运行的，每一帧中处理一次，而并不与主线程并行。这就意味着在协程之间并不存在着所谓线程间的同步和互斥问题，访问同一个值也都是安全的，不会出现死锁。<br><a id="more"></a></p>
-<h3 id="2-协程的用法"><a href="#2-协程的用法" class="headerlink" title="2. 协程的用法"></a>2. 协程的用法</h3><h4 id="2-1-开启协程"><a href="#2-1-开启协程" class="headerlink" title="2.1 开启协程"></a>2.1 开启协程</h4><p>开启协程的两种方式</p>
-<ul>
-<li><code>StartCoroutine(string methodName)</code>。参数是方法名(字符串类型)；此方法可以包含一个参数，形参方法可以有返回值。</li>
-<li><code>StartCoroutine（IEnumerator method)</code>。参数是方法名(TestMethod()),方法中可以包含多个参数；IEnumrator 类型的方法不能含有ref或者out<br>类型的参数，但可以含有被传递的引用；必须有有返回值，且返回值类型为IEnumrator,返回值使用（yield retuen +表达式或者值，或者 yield break）语句。</li>
+        <h3 id="1-基本概念"><a href="#1-基本概念" class="headerlink" title="1. 基本概念"></a>1. 基本概念</h3><p>Camera是玩家观察世界的装置，屏幕空间点按像素定义，屏幕的左下为（0,0）；右上是（pixelwidth，pixelHeight）。在Unity中创建一个Camera后，除了默认带的Transform组件外，还会带上Audio Lisenter组件，如果场景中没有这个组件，将听不到任何声音。<br><a id="more"></a></p>
+<h3 id="2-Camera组件属性"><a href="#2-Camera组件属性" class="headerlink" title="2. Camera组件属性"></a>2. Camera组件属性</h3><ul>
+<li><code>Clear Flags</code>： 清除标记，决定屏幕中哪些部分被清楚，一般用于多台摄像机来描述不同对象的情况（人和枪）。每个相机在渲染时会存储颜色和深度信息，屏幕未绘制的部分是空的，默认情况下会显示天空盒，可以设置清除标记来清除缓冲区的信息。<ul>
+<li>Solid Color： 纯色，显示此处的默认背景</li>
+<li>Skybox：天空盒，在屏幕空白处显示当前摄像机的天空盒</li>
+<li>Depth only：仅深度，拥有对象不被检测（人物拿枪）</li>
+<li>Don’t Clear：不清除，所有的结果都会叠加在下一帧，造成涂片效果</li>
 </ul>
-<h4 id="2-2-终止协程"><a href="#2-2-终止协程" class="headerlink" title="2.2 终止协程"></a>2.2 终止协程</h4><p>终止协程的两种方式</p>
-<ul>
-<li><code>StopCoroutine (string methodName)</code>，只能终止指定的协程,在程序中调用<code>StopCoroutine()</code> 方法只能终止以字符串形式启动的协程。</li>
-<li><code>StopAllCoroutine()</code>，终止所有协程</li>
+</li>
+<li>Background：没有Skybox的时候显示纯色时设置的背景</li>
+<li>Culling Mask：剔除遮罩，根据对象所指定的层来控制渲染</li>
+<li>Projection：投影方式<ul>
+<li>Orthographic： 正交</li>
+<li>Perspective： 透视</li>
 </ul>
-<h4 id="2-2-挂起"><a href="#2-2-挂起" class="headerlink" title="2.2 挂起"></a>2.2 挂起</h4><ul>
-<li><p><code>yield</code>：挂起，程序遇到yield关键字时会被挂起，暂停执行，等待条件满足时从当前位置继续执行</p>
 </li>
-<li><p><code>yield return 0</code> or <code>yield return null</code>:程序在下一帧中从当前位置继续执行</p>
-</li>
-<li><p><code>yield return 1,2,3,......</code>: 程序等待1，2，3…帧之后从当前位置继续执行</p>
-</li>
-<li><p><code>yield return new WaitForSeconds(n)</code>:程序等待n秒后从当前位置继续执行</p>
-</li>
-<li><p><code>yield new WaitForEndOfFrame()</code>:在所有的渲染以及GUI程序执行完成后从当前位置继续执行</p>
-</li>
-<li><p><code>yield new WaitForFixedUpdate()</code>:所有脚本中的FixedUpdate()函数都被执行后从当前位置继续执行</p>
-</li>
-<li><p><code>yield return WWW</code>:等待一个网络请求完成后从当前位置继续执行</p>
-</li>
-<li><p><code>yield return StartCoroutine()</code>:等待一个协程执行完成后从当前位置继续执行</p>
-</li>
-<li><p><code>yield break</code>:将会导致协程的执行条件不被满足，不会从当前的位置继续执行程序，而是直接从当前位置跳出函数体，回到函数的根部</p>
-</li>
+<li>Size：相机的视口的大小，相机的广角</li>
+<li>Clipping Planes：剪裁平面，摄像机的渲染范围，Near为最近点，Far为最远点</li>
+<li>ViewPort Rect：视图矩形，用四个数值来控制摄像机的视图在屏幕中的位置和大小，使用的是屏幕坐标系，数值在0~1之间，X（水平位置起点）、Y（垂直位置起点）、W（宽度）、H（高度）</li>
+<li>Depth：深度，用于控制摄像机的渲染顺序</li>
+<li>Rendering Path：渲染路径，一般使用玩家设定</li>
+<li>Target Texture：目标纹理</li>
+<li>Occlusion Culling：是否剔除物体背向摄像机的部分</li>
+<li>HDR：高动态光照渲染，能让场景变的更真实，光照的变化不会显得太突兀</li>
+<li>MSAA：是否启用MSAA渲染目标</li>
+<li>Allow Dynamic Resolution：动态分辨率缩放</li>
+<li>Target Dilsplay：设置摄像机的目标显示</li>
 </ul>
-<h3 id="3-协程的执行原理"><a href="#3-协程的执行原理" class="headerlink" title="3. 协程的执行原理"></a>3. 协程的执行原理</h3><p>协程函数的返回值是IEnumerator，它是一个迭代器，可以把它当成执行一个序列的某个节点的指针，它提供了两个重要的接口，分别是<code>Current</code>(返回当前指向的元素)和<code>MoveNext</code><br>(将指针向后移动一个单位，如果移动成功，则返回<code>true</code>)</p>
-<p>yield关键词用来声明序列中的下一个值或者是一个无意义的值，如果使用yield <code>return x</code>(x是指一个具体的对象或者数值)的话，那么MoveNext返回为true并且<code>Current</code>被赋值为x,如果使用<code>yield break</code>使得<code>MoveNext</code>返回为<code>false</code></p>
-<p>如果<code>MoveNext</code>函数返回为<code>true</code>意味着协程的执行条件被满足，则能够从当前的位置继续往下执行。否则不能从当前位置继续往下执行。</p>
 
       
     </div>
@@ -403,7 +397,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/C/" rel="tag"># C#</a>
+            <a href="/tags/Game/" rel="tag"># Game</a>
           
         </div>
       
@@ -416,8 +410,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/03/20/Unity3d/UnityNote/" rel="next" title="Unity3d学习笔记">
-                <i class="fa fa-chevron-left"></i> Unity3d学习笔记
+              <a href="/2019/04/20/Unity3d/Canvas/" rel="next" title="Unity3d的Canvas">
+                <i class="fa fa-chevron-left"></i> Unity3d的Canvas
               </a>
             
           </div>
@@ -425,10 +419,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/04/20/Unity3d/Canvas/" rel="prev" title="Unity3d的Canvas">
-                Unity3d的Canvas <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -569,7 +559,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-基本概念"><span class="nav-number">1.</span> <span class="nav-text">1. 基本概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-协程的用法"><span class="nav-number">2.</span> <span class="nav-text">2. 协程的用法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1-开启协程"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 开启协程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2-终止协程"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 终止协程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2-挂起"><span class="nav-number">2.3.</span> <span class="nav-text">2.2 挂起</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-协程的执行原理"><span class="nav-number">3.</span> <span class="nav-text">3. 协程的执行原理</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-基本概念"><span class="nav-number">1.</span> <span class="nav-text">1. 基本概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-Camera组件属性"><span class="nav-number">2.</span> <span class="nav-text">2. Camera组件属性</span></a></li></ol></div>
             
 
           </div>
