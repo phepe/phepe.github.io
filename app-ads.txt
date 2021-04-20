@@ -92,7 +92,6 @@ smartadserver.com, 1692, RESELLER
 adcolony.com, c490f6e7399a25d6, RESELLER, 1ad675c9de6b5176
 
 #vungle
-
 vungle.com, 6078e3b8427ea2001577e2b0, DIRECT, c107d686becd2d77
 adcolony.com, 1efc6603710003ea, RESELLER, 1ad675c9de6b5176
 adcolony.com, 801e49d1be83b5f9, RESELLER, 1ad675c9de6b5176
