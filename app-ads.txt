@@ -1,6 +1,9 @@
 #google
-google.com, pub-8442945819202493, DIRECT, f08c47fec0942fa0
 google.com, pub-8850905888247159, DIRECT, f08c47fec0942fa0
+google.com, pub-8919938010881757, DIRECT, f08c47fec0942fa0
+
+#applovin
+applovin.com, cf2a239027985f168c9f2905c340440a, DIRECT
 
 #unity
 adcolony.com, 0a0f72cd66122f31, RESELLER, 1ad675c9de6b5176
