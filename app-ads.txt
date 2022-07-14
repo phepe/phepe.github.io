@@ -86,6 +86,31 @@ rubiconproject.com, 14334, RESELLER, 0bfd66d529a55807
 rubiconproject.com, 24526, RESELLER, 0bfd66d529a55807
 rubiconproject.com, 18364, RESELLER, 0bfd66d529a55807
 telaria.com, rwd19-1199794, RESELLER, 1a4e959a1b50034a
+Pubmatic.com, 157800, RESELLER,  5d62403b186f2ace
+Pubmatic.com, 158118, RESELLER,  5d62403b186f2ace
+xandr.com, 7353, RESELLER, f5ab79cb980f11d1
+xandr.com, 13167, RESELLER, f5ab79cb980f11d1
+xandr.com, 13297, RESELLER, f5ab79cb980f11d1
+Pubnative.net, 1007063, RESELLER,  d641df8625486a7b
+Pubnative.net, 1003601, RESELLER,  d641df8625486a7b
+algorix.co, 54616, RESELLER, 5b394c12fea27a1d
+algorix.co, 60016, RESELLER, 5b394c12fea27a1d
+webeyemob.com, 70104, RESELLER
+adview.com, 48045325, RESELLER,  1b2cc038a11ea319
+appnexus.com, 7353, RESELLER, f5ab79cb980f11d1
+appnexus.com, 2764, RESELLER, f5ab79cb980f11d1
+appnexus.com, 10617, RESELLER, f5ab79cb980f11d1
+appnexus.com, 9393, RESELLER, f5ab79cb980f11d1
+appnexus.com, 13293, RESELLER, f5ab79cb980f11d1
+appnexus.com, 13297, RESELLER, f5ab79cb980f11d1
+meitu.com, 699, RESELLER
+rubiconproject.com, 24362, RESELLER, 0bfd66d529a55807
+pubmatic.com, 161136, RESELLER, 5d62403b186f2ace
+adelement.com, 30167, RESELLER
+admanmedia.com, 613, RESELLER
+thebrave.io, 9840732, RESELLER,  c25b2154543746ac
+thebrave.io, 1234594, RESELLER,  c25b2154543746ac
+
 
 #chartboost
 chartboost.com, 582d7e3543150f04a9cd2719, DIRECT
