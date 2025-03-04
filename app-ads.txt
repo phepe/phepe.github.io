@@ -2,6 +2,9 @@
 google.com, pub-8850905888247159, DIRECT, f08c47fec0942fa0
 google.com, pub-8919938010881757, DIRECT, f08c47fec0942fa0
 
+#kuyou
+google.com, pub-1347039003409160, DIRECT, f08c47fec0942fa0
+
 #applovin
 applovin.com, cf2a239027985f168c9f2905c340440a, DIRECT
 
